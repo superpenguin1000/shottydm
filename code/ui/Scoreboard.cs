@@ -8,7 +8,7 @@ public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 
 	public Scoreboard()
 	{
-		StyleSheet = StyleSheet.FromFile( "/ui/Scoreboard.scss" );
+		StyleSheet.Load( "/ui/Scoreboard.scss" );
 	}
 
 	protected override void AddHeader()

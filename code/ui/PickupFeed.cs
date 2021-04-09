@@ -12,7 +12,7 @@ public partial class PickupFeed : Panel
 	public PickupFeed()
 	{
 		Current = this;
-		StyleSheet = StyleSheet.FromFile( "/ui/PickupFeed.scss" );
+		StyleSheet.Load( "/ui/PickupFeed.scss" );
 	}
 
 	/// <summary>
