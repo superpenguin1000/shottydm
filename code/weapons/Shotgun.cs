@@ -21,7 +21,7 @@ partial class Shotgun : BaseDmWeapon
 		AmmoClip = 6;
 	}
 
-	public override void AttackPrimary( Player owner ) 
+	public override void AttackPrimary() 
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
@@ -49,7 +49,7 @@ partial class Shotgun : BaseDmWeapon
 		}
 	}
 
-	public override void AttackSecondary( Player owner )
+	public override void AttackSecondary()
 	{
 		TimeSincePrimaryAttack = -0.5f;
 		TimeSinceSecondaryAttack = -0.5f;
@@ -131,7 +131,7 @@ partial class Shotgun : BaseDmWeapon
 
 			if ( AmmoClip < ClipSize )
 			{
-				Reload( Owner );
+				Reload();
 			}
 			else
 			{
