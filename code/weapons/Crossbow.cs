@@ -34,8 +34,8 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 		using ( Prediction.Off() )
 		{
 			var bolt = new CrossbowBolt();
-			bolt.Pos = Owner.EyePos;
-			bolt.Rot = Owner.EyeRot;
+			bolt.WorldPos = Owner.EyePos;
+			bolt.WorldRot = Owner.EyeRot;
 			bolt.Owner = Owner;
 			bolt.Velocity = Owner.EyeRot.Forward * 100;
 		}
