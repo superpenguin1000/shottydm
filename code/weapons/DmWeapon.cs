@@ -43,6 +43,8 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 		base.ActiveStart( ent );
 
 		TimeSinceDeployed = 0;
+
+		IsReloading = false;
 	}
 
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
