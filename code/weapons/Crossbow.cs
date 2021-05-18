@@ -34,8 +34,8 @@ partial class Crossbow : BaseDmWeapon
 		using ( Prediction.Off() )
 		{
 			var bolt = new CrossbowBolt();
-			bolt.WorldPos = Owner.EyePos;
-			bolt.WorldRot = Owner.EyeRot;
+			bolt.Position = Owner.EyePos;
+			bolt.Rotation = Owner.EyeRot;
 			bolt.Owner = Owner;
 			bolt.Velocity = Owner.EyeRot.Forward * 100;
 		}
@@ -60,7 +60,7 @@ partial class Crossbow : BaseDmWeapon
 	{
 		if ( Zoomed )
 		{
-			owner.ViewAngles = Angles.Lerp( owner.LastViewAngles, owner.ViewAngles, 0.2f );
+			owner.ViewAngles = Angles.Lerp( owner.OriginalViewAngles, owner.ViewAngles, 0.2f );
 		}
 	}
 

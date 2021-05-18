@@ -17,7 +17,7 @@ partial class DmViewModel : BaseViewModel
 
 	private void AddCameraEffects( ref CameraSetup camSetup )
 	{
-		WorldRot = Local.Pawn.EyeRot;
+		Rotation = Local.Pawn.EyeRot;
 
 		//
 		// Bob up and down based on our walk movement
@@ -31,7 +31,7 @@ partial class DmViewModel : BaseViewModel
 			walkBob += Time.Delta * 25.0f * speed;
 		}
 
-		WorldPos += up * MathF.Sin( walkBob ) * speed * -1;
-		WorldPos += left * MathF.Sin( walkBob * 0.6f ) * speed * -0.5f;
+		Position += up * MathF.Sin( walkBob ) * speed * -1;
+		Position += left * MathF.Sin( walkBob * 0.6f ) * speed * -0.5f;
 	}
 }

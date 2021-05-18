@@ -55,7 +55,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 
 		PickupTrigger = new PickupTrigger();
 		PickupTrigger.Parent = this;
-		PickupTrigger.WorldPos = WorldPos;
+		PickupTrigger.Position = Position;
 	}
 
 	public override void Reload()
@@ -162,6 +162,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 	{
 		Host.AssertClient();
 
+		Log.Info( $"{EffectEntity} {ViewModelEntity} {IsFirstPersonMode} {CurrentView.Viewer} parent:{Parent}" );
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
 		if ( IsLocalPawn )
@@ -231,7 +232,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 			return;
 
 		ViewModelEntity = new DmViewModel();
-		ViewModelEntity.WorldPos = WorldPos;
+		ViewModelEntity.Position = Position;
 		ViewModelEntity.Owner = Owner;
 		ViewModelEntity.EnableViewmodelRendering = true;
 		ViewModelEntity.SetModel( ViewModelPath );

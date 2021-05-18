@@ -171,11 +171,11 @@ partial class DeathmatchPlayer : Player
 		}
 		else
 		{
-			//lastCameraRot = Rotation.Lerp( lastCameraRot, Camera.Rot, Time.Delta * 0.2f * angleDiffDegrees );
+			//lastCameraRot = Rotation.Lerp( lastCameraRot, Camera.Rotation, Time.Delta * 0.2f * angleDiffDegrees );
 		}
 
 		// uncomment for lazy cam
-		//camera.Rot = lastCameraRot;
+		//camera.Rotation = lastCameraRot;
 
 		if ( setup.Viewer != null )
 		{
@@ -245,7 +245,7 @@ partial class DeathmatchPlayer : Player
 			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, ((float)Health).LerpInverse( 100, 0 ) );
 		}
 
-		TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.WorldPos : info.Attacker.WorldPos );
+		TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
 	}
 
 	[ClientRpc]
