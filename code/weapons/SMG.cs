@@ -68,7 +68,7 @@ partial class SMG : BaseDmWeapon
 		CrosshairPanel?.OnEvent( "fire" );
 	}
 
-	public override void TickPlayerAnimator( PawnAnimationController anim )
+	public override void SimulateAnimator( PawnAnimator anim )
 	{
 		anim.SetParam( "holdtype", 2 ); // TODO this is shit
 		anim.SetParam( "aimat_weight", 1.0f );

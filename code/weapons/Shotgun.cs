@@ -146,7 +146,7 @@ partial class Shotgun : BaseDmWeapon
 		ViewModelEntity?.SetAnimParam( "reload_finished", true );
 	}
 
-	public override void TickPlayerAnimator( PawnAnimationController anim )
+	public override void SimulateAnimator( PawnAnimator anim )
 	{
 		anim.SetParam( "holdtype", 2 ); // TODO this is shit
 		anim.SetParam( "aimat_weight", 1.0f );
