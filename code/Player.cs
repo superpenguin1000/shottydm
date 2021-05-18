@@ -51,12 +51,7 @@ partial class DeathmatchPlayer : Player
 	{
 		base.OnKilled();
 
-		//
 		Inventory.DropActive();
-
-		//
-		// Delete any items we didn't drop
-		//
 		Inventory.DeleteContents();
 
 		BecomeRagdollOnClient( LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ) );
@@ -71,7 +66,6 @@ partial class DeathmatchPlayer : Player
 
 	public override void Simulate( Client cl )
 	{
-
 		//if ( cl.NetworkIdent == 1 )
 		//	return;
 
@@ -100,9 +94,6 @@ partial class DeathmatchPlayer : Player
 			{
 				Camera = new ThirdPersonCamera();
 			}
-
-			Log.Info( $"{Host.Name} : {NetworkIdent} now has cam {Camera}" );
-		//	NetworkDirty( "Ffff", NetVarGroup.NetPredicted );
 		}
 
 		if ( Input.Pressed( InputButton.Drop ) )
@@ -243,9 +234,9 @@ partial class DeathmatchPlayer : Player
 		{
 			// Note - sending this only to the attacker!
 			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, ((float)Health).LerpInverse( 100, 0 ) );
-		}
 
-		TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+		}
 	}
 
 	[ClientRpc]
