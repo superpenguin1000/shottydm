@@ -77,18 +77,20 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 		}
 
 		IsReloading = true;
-		Owner.SetAnimParam( "b_reload", true ); 
+
+		(Owner as AnimEntity).SetAnimParam( "b_reload", true );
+
 		StartReloadEffects();
 	}
 
-	public override void OnPlayerControlTick( Player owner ) 
+	public override void Simulate( Client owner ) 
 	{
 		if ( TimeSinceDeployed < 0.6f )
 			return;
 
 		if ( !IsReloading )
 		{
-			base.OnPlayerControlTick( owner );
+			base.Simulate( owner );
 		}
 
 		if ( IsReloading && TimeSinceReload > ReloadTime )
@@ -162,7 +164,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
-		if (Owner == Player.Local)
+		if ( IsLocalPawn )
 		{
 			new Sandbox.ScreenShake.Perlin();
 		}
@@ -237,10 +239,10 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 
 	public override void CreateHudElements()
 	{
-		if ( Hud.CurrentPanel == null ) return;
+		if ( Local.Hud == null ) return;
 
 		CrosshairPanel = new Crosshair();
-		CrosshairPanel.Parent = Hud.CurrentPanel;
+		CrosshairPanel.Parent = Local.Hud;
 		CrosshairPanel.AddClass( ClassInfo.Name );
 	}
 

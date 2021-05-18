@@ -34,8 +34,8 @@ public partial class DamageIndicator : Panel
 		public override void Tick()
 		{
 			base.Tick();
-
-			var wpos = Camera.LastRot.Inverse * ( WorldPos.WithZ( 0 ) - Camera.LastPos.WithZ( 0 )).Normal;
+			
+			var wpos = CurrentView.Rotation.Inverse * ( WorldPos.WithZ( 0 ) - CurrentView.Position.WithZ( 0 )).Normal;
 			wpos = wpos.WithZ( 0 ).Normal;
 
 			var angle = MathF.Atan2( wpos.y, -1.0f * wpos.x );
@@ -48,6 +48,7 @@ public partial class DamageIndicator : Panel
 
 			Style.Transform = pt;
 			Style.Dirty();
+			
 		}
 
 		async Task Lifetime()

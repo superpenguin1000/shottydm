@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
-partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
+partial class Crossbow : BaseDmWeapon
 { 
 	public override string ViewModelPath => "weapons/rust_crossbow/v_rust_crossbow.vmdl";
 
@@ -41,11 +41,11 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 		}
 	}
 
-	public override void OnPlayerControlTick( Player player )
+	public override void Simulate( Client cl )
 	{
-		base.OnPlayerControlTick( player );
+		base.Simulate( cl );
 
-		Zoomed = Owner.Input.Down( InputButton.Attack2 );
+		Zoomed = Input.Down( InputButton.Attack2 );
 	}
 
 	public virtual void ModifyCamera( Camera cam )
@@ -56,7 +56,7 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 		}
 	}
 
-	public virtual void BuildInput( ClientInput owner )
+	public override void BuildInput( InputBuilder owner ) 
 	{
 		if ( Zoomed )
 		{
@@ -69,7 +69,7 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 	{
 		Host.AssertClient();
 
-		if ( Owner == Player.Local )
+		if ( Owner == Local.Pawn )
 		{
 			new Sandbox.ScreenShake.Perlin( 0.5f, 4.0f, 1.0f, 0.5f );
 		}

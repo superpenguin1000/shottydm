@@ -32,7 +32,7 @@ partial class DmInventory : BaseInventory
 				if ( notices )
 				{
 					Sound.FromWorld( "dm.pickup_ammo", ent.WorldPos );
-					PickupFeed.OnPickup( player, $"+{ammo} {ammoType}" );
+					PickupFeed.OnPickup( To.Single( player ), $"+{ammo} {ammoType}" );
 				}
 			}
 
@@ -46,7 +46,7 @@ partial class DmInventory : BaseInventory
 		if ( weapon != null && notices )
 		{
 			Sound.FromWorld( "dm.pickup_weapon", ent.WorldPos );
-			PickupFeed.OnPickup( player, $"{ent.ClassInfo.Title}" ); 
+			PickupFeed.OnPickup( To.Single( player ), $"{ent.ClassInfo.Title}" ); 
 		}
 
 

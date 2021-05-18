@@ -1,4 +1,6 @@
 ﻿using Sandbox;
+using System;
+using System.Linq;
 
 /// <summary>
 /// This is the heart of the gamemode. It's responsible
@@ -18,13 +20,9 @@ partial class DeathmatchGame : Game
 		{
 			new DeathmatchHud();
 		}
-	}
 
-	/// <summary>
-	/// Called when a player joins and wants a player entity. We create
-	/// our own class so we can control what happens.
-	/// </summary>
-	public override Player CreatePlayer() => new DeathmatchPlayer();
+		
+	}
 
 	public override void PostLevelLoaded()
 	{
@@ -33,29 +31,13 @@ partial class DeathmatchGame : Game
 		ItemRespawn.Init();
 	}
 
-
-
-	/// <summary>
-	/// Called when a player has died, or been killed
-	/// </summary>
-	public override void PlayerKilled( Player player )
+	public override void ClientJoined( Client cl )
 	{
-		Log.Info( $"{player.Name} was killed" );
+		base.ClientJoined( cl );
 
-		if ( player.LastAttacker != null )
-		{
-			if ( player.LastAttacker is Player attackPlayer )
-			{
-				KillFeed.AddEntry( attackPlayer.SteamId, attackPlayer.Name, player.SteamId, player.Name, player.LastAttackerWeapon?.ClassInfo?.Name );
-			}
-			else
-			{
-				KillFeed.AddEntry( (ulong)player.LastAttacker.NetworkIdent, player.LastAttacker.ToString(), player.SteamId, player.Name, "killed" );
-			}
-		}
-		else
-		{
-			KillFeed.AddEntry( (ulong)0, "", player.SteamId, player.Name, "died" );
-		}
+		var player = new DeathmatchPlayer();
+		player.Respawn();
+
+		cl.Pawn = player;
 	}
 }

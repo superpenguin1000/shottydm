@@ -32,7 +32,7 @@ partial class Shotgun : BaseDmWeapon
 			return;
 		}
 
-		Owner.SetAnimParam( "b_attack", true );
+		(Owner as AnimEntity).SetAnimParam( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -60,7 +60,7 @@ partial class Shotgun : BaseDmWeapon
 			return;
 		}
 
-		Owner.SetAnimParam( "b_attack", true );
+		(Owner as AnimEntity).SetAnimParam( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -87,7 +87,7 @@ partial class Shotgun : BaseDmWeapon
 
 		ViewModelEntity?.SetAnimParam( "fire", true );
 
-		if (Owner == Player.Local)
+		if ( IsLocalPawn )
 		{
 			new Sandbox.ScreenShake.Perlin(1.0f, 1.5f, 2.0f);
 		}
@@ -105,7 +105,7 @@ partial class Shotgun : BaseDmWeapon
 		ViewModelEntity?.SetAnimParam( "fire_double", true );
 		CrosshairPanel?.OnEvent( "fire" );
 
-		if (Owner == Player.Local)
+		if ( IsLocalPawn )
 		{
 			new Sandbox.ScreenShake.Perlin(3.0f, 3.0f, 3.0f);
 		}
@@ -146,7 +146,7 @@ partial class Shotgun : BaseDmWeapon
 		ViewModelEntity?.SetAnimParam( "reload_finished", true );
 	}
 
-	public override void TickPlayerAnimator( PlayerAnimator anim )
+	public override void TickPlayerAnimator( PawnAnimationController anim )
 	{
 		anim.SetParam( "holdtype", 2 ); // TODO this is shit
 		anim.SetParam( "aimat_weight", 1.0f );

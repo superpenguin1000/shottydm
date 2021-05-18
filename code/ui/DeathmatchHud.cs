@@ -6,7 +6,7 @@ using System;
 using System.Threading.Tasks;
 
 [Library]
-public partial class DeathmatchHud : Hud
+public partial class DeathmatchHud : HudEntity<RootPanel>
 {
 	public DeathmatchHud()
 	{
@@ -28,6 +28,7 @@ public partial class DeathmatchHud : Hud
 		RootPanel.AddChild<ChatBox>();
 		RootPanel.AddChild<KillFeed>();
 		RootPanel.AddChild<Scoreboard>();
+		RootPanel.AddChild<VoiceList>();
 	}
 
 	[ClientRpc]

@@ -4,3 +4,5 @@ obj/
 code/accesslist.txt
 .intermediate
 tools_asset_info.bin
+code/Properties/launchSettings.json
+dm98.csproj
