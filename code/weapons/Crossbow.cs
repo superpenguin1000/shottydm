@@ -48,11 +48,13 @@ partial class Crossbow : BaseDmWeapon
 		Zoomed = Input.Down( InputButton.Attack2 );
 	}
 
-	public virtual void ModifyCamera( Camera cam )
+	public override void PostCameraSetup( ref CameraSetup camSetup )
 	{
+		base.PostCameraSetup( ref camSetup );
+
 		if ( Zoomed )
 		{
-			cam.FieldOfView = 20;
+			camSetup.FieldOfView = 20;
 		}
 	}
 
