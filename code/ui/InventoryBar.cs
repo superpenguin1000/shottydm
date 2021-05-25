@@ -47,7 +47,7 @@ public class InventoryBar : Panel
 	/// IClientInput implementation, calls during the client input build.
 	/// You can both read and write to input, to affect what happens down the line.
 	/// </summary>
-	[Event( "buildinput" )]
+	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )
 	{
 		bool wantOpen = IsOpen;
