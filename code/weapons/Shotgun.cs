@@ -32,7 +32,7 @@ partial class Shotgun : BaseDmWeapon
 			return;
 		}
 
-		(Owner as AnimEntity).SetAnimParam( "b_attack", true );
+		(Owner as AnimEntity).SetAnimBool( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -60,7 +60,7 @@ partial class Shotgun : BaseDmWeapon
 			return;
 		}
 
-		(Owner as AnimEntity).SetAnimParam( "b_attack", true );
+		(Owner as AnimEntity).SetAnimBool( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -85,7 +85,7 @@ partial class Shotgun : BaseDmWeapon
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
 
-		ViewModelEntity?.SetAnimParam( "fire", true );
+		ViewModelEntity?.SetAnimBool( "fire", true );
 
 		if ( IsLocalPawn )
 		{
@@ -102,7 +102,7 @@ partial class Shotgun : BaseDmWeapon
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
-		ViewModelEntity?.SetAnimParam( "fire_double", true );
+		ViewModelEntity?.SetAnimBool( "fire_double", true );
 		CrosshairPanel?.OnEvent( "fire" );
 
 		if ( IsLocalPawn )
@@ -143,7 +143,7 @@ partial class Shotgun : BaseDmWeapon
 	[ClientRpc]
 	protected virtual void FinishReload()
 	{
-		ViewModelEntity?.SetAnimParam( "reload_finished", true );
+		ViewModelEntity?.SetAnimBool( "reload_finished", true );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )

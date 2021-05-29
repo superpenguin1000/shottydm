@@ -233,7 +233,7 @@ partial class DeathmatchPlayer : Player
 		if ( info.Attacker is DeathmatchPlayer attacker && attacker != this )
 		{
 			// Note - sending this only to the attacker!
-			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, ((float)Health).LerpInverse( 100, 0 ) );
+			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
 
 			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
 		}

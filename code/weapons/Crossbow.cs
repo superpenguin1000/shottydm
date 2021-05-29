@@ -76,7 +76,7 @@ partial class Crossbow : BaseDmWeapon
 			new Sandbox.ScreenShake.Perlin( 0.5f, 4.0f, 1.0f, 0.5f );
 		}
 
-		ViewModelEntity?.SetAnimParam( "fire", true );
+		ViewModelEntity?.SetAnimBool( "fire", true );
 		CrosshairPanel?.OnEvent( "fire" );
 	}
 }
