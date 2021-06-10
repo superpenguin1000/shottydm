@@ -116,15 +116,16 @@ public class InventoryBar : Panel
 
 	int SlotPressInput( InputBuilder input, int SelectedIndex )
 	{
-		var columninput = 0;
+		var columninput = -1;
 
 		if ( input.Pressed( InputButton.Slot1 ) ) columninput = 0;
 		if ( input.Pressed( InputButton.Slot2 ) ) columninput = 1;
 		if ( input.Pressed( InputButton.Slot3 ) ) columninput = 2;
 		if ( input.Pressed( InputButton.Slot4 ) ) columninput = 3;
 		if ( input.Pressed( InputButton.Slot5 ) ) columninput = 4;
+		if ( input.Pressed( InputButton.Slot6 ) ) columninput = 5;
 
-		if ( columninput == 0 ) return SelectedIndex;
+		if ( columninput == -1 ) return SelectedIndex;
 
 		if ( SelectedWeapon.IsValid() && SelectedWeapon.Bucket == columninput )
 		{
