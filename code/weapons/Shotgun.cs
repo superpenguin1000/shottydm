@@ -2,6 +2,7 @@
 
 
 [Library( "dm_shotgun", Title = "Shotgun" )]
+[Hammer.EditorModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" )]
 partial class Shotgun : BaseDmWeapon
 { 
 	public override string ViewModelPath => "weapons/rust_pumpshotgun/v_rust_pumpshotgun.vmdl";
