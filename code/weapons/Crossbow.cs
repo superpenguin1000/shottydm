@@ -78,6 +78,6 @@ partial class Crossbow : BaseDmWeapon
 		}
 
 		ViewModelEntity?.SetAnimBool( "fire", true );
-		CrosshairPanel?.OnEvent( "fire" );
+		CrosshairPanel?.CreateEvent( "fire" );
 	}
 }

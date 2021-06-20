@@ -66,7 +66,7 @@ partial class SMG : BaseDmWeapon
 		}
 
 		ViewModelEntity?.SetAnimBool( "fire", true );
-		CrosshairPanel?.OnEvent( "fire" );
+		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )

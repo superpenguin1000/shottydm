@@ -172,7 +172,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 		}
 
 		ViewModelEntity?.SetAnimBool( "fire", true );
-		CrosshairPanel?.OnEvent( "fire" );
+		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	/// <summary>

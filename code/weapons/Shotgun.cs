@@ -93,7 +93,7 @@ partial class Shotgun : BaseDmWeapon
 			new Sandbox.ScreenShake.Perlin(1.0f, 1.5f, 2.0f);
 		}
 
-		CrosshairPanel?.OnEvent( "fire" );
+		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	[ClientRpc]
@@ -104,7 +104,7 @@ partial class Shotgun : BaseDmWeapon
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
 		ViewModelEntity?.SetAnimBool( "fire_double", true );
-		CrosshairPanel?.OnEvent( "fire" );
+		CrosshairPanel?.CreateEvent( "fire" );
 
 		if ( IsLocalPawn )
 		{
