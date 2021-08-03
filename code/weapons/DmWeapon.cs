@@ -74,8 +74,6 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 		{
 			if ( player.AmmoCount( AmmoType ) <= 0 )
 				return;
-
-			StartReloadEffects();
 		}
 
 		IsReloading = true;

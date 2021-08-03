@@ -43,6 +43,7 @@ partial class SMG : BaseDmWeapon
 		//
 		// Shoot the bullets
 		//
+		Rand.SetSeed(Time.Tick);
 		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
 
 	}

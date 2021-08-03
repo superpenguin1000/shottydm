@@ -47,7 +47,8 @@ partial class Pistol : BaseDmWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.05f, 1.5f, 9.0f, 3.0f );
+		//Rand.SetSeed( Time.Tick );
+		ShootBullet( 0.2f, 1.5f, 9.0f, 3.0f );
 
 	}
 }
