@@ -11,7 +11,6 @@ public partial class HitIndicator : Panel
 	public HitIndicator()
 	{
 		Current = this;
-		StyleSheet.Load( "/ui/HitIndicator.scss" );
 	}
 
 	public override void Tick()

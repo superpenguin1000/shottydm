@@ -16,8 +16,6 @@ public class InventoryBar : Panel
 
 	public InventoryBar()
 	{
-		StyleSheet.Load( "/ui/InventoryBar.scss" );
-
 		for ( int i=0; i<6; i++ )
 		{
 			var icon = new InventoryColumn( i, this );

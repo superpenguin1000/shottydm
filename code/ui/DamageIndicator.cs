@@ -11,7 +11,6 @@ public partial class DamageIndicator : Panel
 	public DamageIndicator()
 	{
 		Current = this;
-		StyleSheet.Load( "/ui/DamageIndicator.scss" );
 	}
 
 	public void OnHit( Vector3 pos )

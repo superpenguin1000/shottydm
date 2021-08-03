@@ -13,7 +13,7 @@ public partial class DeathmatchHud : HudEntity<RootPanel>
 		if ( !IsClient )
 			return;
 
-		RootPanel.StyleSheet.Load( "/ui/DeathmatchHud.scss" );
+		RootPanel.StyleSheet.Load( "/styles/hud.scss" );
 
 		RootPanel.AddChild<Vitals>();
 		RootPanel.AddChild<Ammo>();

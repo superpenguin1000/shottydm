@@ -1,4 +1,12 @@
 ﻿
+@import "_crosshair.scss";
+@import "_damageindicator.scss";
+@import "_hitindicator.scss";
+@import "_inventory.scss";
+@import "_killfeed.scss";
+@import "_pickupfeed.scss";
+@import "_scoreboard.scss";
+
 rootpanel
 {
 	background-color: rgba( #333, 0 );
