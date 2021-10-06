@@ -37,12 +37,12 @@ partial class Pistol : BaseDmWeapon
 			return;
 		}
 
+		PlaySound( "rust_pistol.shoot" );
 
 		//
 		// Tell the clients to play the shoot effects
 		//
 		ShootEffects();
-		PlaySound( "rust_pistol.shoot" );
 
 		//
 		// Shoot the bullets
@@ -50,5 +50,9 @@ partial class Pistol : BaseDmWeapon
 		//Rand.SetSeed( Time.Tick );
 		ShootBullet( 0.2f, 1.5f, 9.0f, 3.0f );
 
+		if ( IsServer )
+		{
+			new TestEntity();
+		}
 	}
 }
