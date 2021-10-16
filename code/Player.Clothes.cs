@@ -30,7 +30,6 @@ partial class DeathmatchPlayer
 			{
 				"models/citizen_clothes/trousers/trousers.jeans.vmdl",
 				"models/citizen_clothes/dress/dress.kneelength.vmdl",
-				"models/citizen/clothes/trousers_tracksuit.vmdl",
 				"models/citizen_clothes/shoes/shorts.cargo.vmdl",
 				"models/citizen_clothes/trousers/trousers.lab.vmdl"
 			} );
