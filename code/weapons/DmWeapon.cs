@@ -125,36 +125,6 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
-
-		//
-		// Tell the clients to play the shoot effects
-		//
-		ShootEffects();
-
-		//
-		// ShootBullet is coded in a way where we can have bullets pass through shit
-		// or bounce off shit, in which case it'll return multiple results
-		//
-		foreach ( var tr in TraceBullet( Owner.EyePos, Owner.EyePos + Owner.EyeRot.Forward * 5000 ) )
-		{
-			tr.Surface.DoBulletImpact( tr );
-
-			if ( !IsServer ) continue;
-			if ( !tr.Entity.IsValid() ) continue;
-
-			//
-			// We turn predictiuon off for this, so aany exploding effects don't get culled etc
-			//
-			using ( Prediction.Off() )
-			{
-				var damage = DamageInfo.FromBullet( tr.EndPos, Owner.EyeRot.Forward * 100, 15 )
-					.UsingTraceResult( tr )
-					.WithAttacker( Owner )
-					.WithWeapon( this );
-
-				tr.Entity.TakeDamage( damage );
-			}
-		}
 	}
 
 	[ClientRpc]
@@ -176,28 +146,30 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 	/// <summary>
 	/// Shoot a single bullet
 	/// </summary>
-	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize )
+	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
 	{
-		var forward = Owner.EyeRot.Forward;
-		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-		forward = forward.Normal;
+		//
+		// Seed rand using the tick, so bullet cones match on client and server
+		//
+		Rand.SetSeed( Time.Tick );
 
-		//
-		// ShootBullet is coded in a way where we can have bullets pass through shit
-		// or bounce off shit, in which case it'll return multiple results
-		//
-		foreach ( var tr in TraceBullet( Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize ) )
+		for ( int i = 0; i < bulletCount; i++ )
 		{
-			tr.Surface.DoBulletImpact( tr );
-
-			if ( !IsServer ) continue;
-			if ( !tr.Entity.IsValid() ) continue;
+			var forward = Owner.EyeRot.Forward;
+			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
+			forward = forward.Normal;
 
 			//
-			// We turn predictiuon off for this, so any exploding effects don't get culled etc
+			// ShootBullet is coded in a way where we can have bullets pass through shit
+			// or bounce off shit, in which case it'll return multiple results
 			//
-			using ( Prediction.Off() )
+			foreach ( var tr in TraceBullet( Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize ) )
 			{
+				tr.Surface.DoBulletImpact( tr );
+
+				if ( !IsServer ) continue;
+				if ( !tr.Entity.IsValid() ) continue;
+
 				var damageInfo = DamageInfo.FromBullet( tr.EndPos, forward * 100 * force, damage )
 					.UsingTraceResult( tr )
 					.WithAttacker( Owner )
