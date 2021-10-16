@@ -36,6 +36,7 @@ partial class DeathmatchPlayer
 			} );
 
 			pants = new ClothingEntity();
+			pants.Tags.Add( "clothes" );
 			pants.SetModel( model );
 			pants.SetParent( this, true );
 			pants.EnableShadowInFirstPerson = true;
@@ -55,6 +56,7 @@ partial class DeathmatchPlayer
 			} );
 
 			jacket = new ClothingEntity();
+			jacket.Tags.Add( "clothes" );
 			jacket.SetModel( model );
 			jacket.SetParent( this, true );
 			jacket.EnableShadowInFirstPerson = true;
@@ -65,6 +67,7 @@ partial class DeathmatchPlayer
 		{
 			shoes = new ClothingEntity();
 			shoes.SetModel( "models/citizen_clothes/shoes/shoes.workboots.vmdl" );
+			shoes.Tags.Add( "clothes" );
 			shoes.SetParent( this, true );
 			shoes.EnableShadowInFirstPerson = true;
 			shoes.EnableHideInFirstPerson = true;
@@ -82,6 +85,7 @@ partial class DeathmatchPlayer
 			} );
 
 			hat = new ClothingEntity();
+			hat.Tags.Add( "clothes" );
 			hat.SetModel( model );
 			hat.SetParent( this, true );
 			hat.EnableShadowInFirstPerson = true;

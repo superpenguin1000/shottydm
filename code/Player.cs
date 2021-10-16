@@ -31,6 +31,13 @@ partial class DeathmatchPlayer : Player
 		Dress();
 		ClearAmmo();
 
+		foreach ( var child in Children.OfType<ModelEntity>() )
+		{
+			child.EnableDrawing = true;
+			child.EnableHideInFirstPerson = true;
+			child.EnableShadowInFirstPerson = true;
+		}
+
 		SupressPickupNotices = true;
 
 		Inventory.Add( new Pistol(), true );
@@ -61,6 +68,11 @@ partial class DeathmatchPlayer : Player
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
+
+		foreach( var child in Children.OfType<ModelEntity>() )
+		{
+			child.EnableDrawing = false;
+		}
 	}
 
 
