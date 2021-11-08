@@ -36,6 +36,7 @@ partial class DeathmatchGame : Game
 		base.ClientJoined( cl );
 
 		var player = new DeathmatchPlayer();
+		player.UpdateClothes( cl );
 		player.Respawn();
 
 		cl.Pawn = player;

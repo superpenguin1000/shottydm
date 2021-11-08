@@ -28,15 +28,8 @@ partial class DeathmatchPlayer : Player
 		EnableHideInFirstPerson = true;
 		EnableShadowInFirstPerson = true;
 
-		Dress();
 		ClearAmmo();
-
-		foreach ( var child in Children.OfType<ModelEntity>() )
-		{
-			child.EnableDrawing = true;
-			child.EnableHideInFirstPerson = true;
-			child.EnableShadowInFirstPerson = true;
-		}
+		Clothing.DressEntity( this );
 
 		SupressPickupNotices = true;
 

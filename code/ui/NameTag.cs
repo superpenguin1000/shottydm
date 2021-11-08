@@ -15,7 +15,7 @@ internal class NameTagComponent : EntityComponent<DeathmatchPlayer>
 
 	protected override void OnActivate()
 	{
-		NameTag = new NameTag( Entity.Client?.Name ?? Entity.Name, Entity.Client?.SteamId );
+		NameTag = new NameTag( Entity.Client?.Name ?? Entity.Name, Entity.Client?.PlayerId );
 	}
 
 	protected override void OnDeactivate()
@@ -45,6 +45,13 @@ internal class NameTagComponent : EntityComponent<DeathmatchPlayer>
 	{
 		foreach ( var player in Sandbox.Entity.All.OfType<DeathmatchPlayer>() )
 		{
+			if ( player.IsLocalPawn && player.IsFirstPersonMode )
+			{
+				var c = player.Components.Get<NameTagComponent>();
+				c?.Remove();
+				continue;
+			}
+
 			if ( player.Position.Distance( CurrentView.Position ) > 500 )
 			{
 				var c = player.Components.Get<NameTagComponent>();
@@ -66,7 +73,7 @@ public class NameTag : WorldPanel
 	public Panel Avatar;
 	public Label NameLabel;
 
-	internal NameTag( string title, ulong? steamid )
+	internal NameTag( string title, long? steamid )
 	{
 		StyleSheet.Load( "/styles/nametag.scss" );
 
