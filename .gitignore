@@ -7,6 +7,5 @@ tools_asset_info.bin
 code/Properties/launchSettings.json
 dm98.csproj
 Properties/launchSettings.json
-tools_thumbnail_cache.bin
-code/dm98.csproj
-code/dm98.csproj
+*.csproj
+.vs

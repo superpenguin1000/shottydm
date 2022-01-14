@@ -1,4 +1,15 @@
 {
-	"sharedassets": "*.*",
-	"ident": "facepunch.dm98"
+  "SharedAssets": "*.*",
+  "Title": "DM98",
+  "Type": "game",
+  "Org": "facepunch",
+  "Ident": "dm98",
+  "FullIdent": "facepunch.dm98",
+  "Schema": 1,
+  "NeedsUpgrade": false,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "Sandbox"
 }
