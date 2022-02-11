@@ -1,8 +1,6 @@
 ﻿using Sandbox;
 using System;
 using System.Linq;
-using System.Numerics;
-using System.Threading;
 
 partial class DeathmatchPlayer : Player
 {
@@ -22,9 +20,9 @@ partial class DeathmatchPlayer : Player
 		Controller = new WalkController();
 		Animator = new StandardPlayerAnimator();
 		Camera = new FirstPersonCamera();
-		  
-		EnableAllCollisions = true; 
-		EnableDrawing = true; 
+
+		EnableAllCollisions = true;
+		EnableDrawing = true;
 		EnableHideInFirstPerson = true;
 		EnableShadowInFirstPerson = true;
 
@@ -62,7 +60,7 @@ partial class DeathmatchPlayer : Player
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
-		foreach( var child in Children.OfType<ModelEntity>() )
+		foreach ( var child in Children.OfType<ModelEntity>() )
 		{
 			child.EnableDrawing = false;
 		}
@@ -108,7 +106,7 @@ partial class DeathmatchPlayer : Player
 			{
 				if ( dropped.PhysicsGroup != null )
 				{
-					dropped.PhysicsGroup.Velocity = Velocity + (EyeRot.Forward + EyeRot.Up) * 300;
+					dropped.PhysicsGroup.Velocity = Velocity + (EyeRotation.Forward + EyeRotation.Up) * 300;
 				}
 
 				timeSinceDropped = 0;
@@ -212,11 +210,11 @@ partial class DeathmatchPlayer : Player
 
 		setup.FieldOfView += fov;
 
-	//	var tx = new Sandbox.UI.PanelTransform();
-	//	tx.AddRotation( 0, 0, lean * -0.1f );
+		//	var tx = new Sandbox.UI.PanelTransform();
+		//	tx.AddRotation( 0, 0, lean * -0.1f );
 
-	//	Hud.CurrentPanel.Style.Transform = tx;
-	//	Hud.CurrentPanel.Style.Dirty(); 
+		//	Hud.CurrentPanel.Style.Transform = tx;
+		//	Hud.CurrentPanel.Style.Dirty(); 
 
 	}
 

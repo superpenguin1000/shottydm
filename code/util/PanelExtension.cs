@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Sandbox.UI
+﻿namespace Sandbox.UI
 {
 	public static class PanelExtension
 	{
@@ -14,8 +11,8 @@ namespace Sandbox.UI
 		{
 			if ( !player.IsValid() ) return;
 
-			var eyePos = player.EyePos;
-			var eyeRot = player.EyeRot;
+			var eyePos = player.EyePosition;
+			var eyeRot = player.EyeRotation;
 
 			var tr = Trace.Ray( eyePos, eyePos + eyeRot.Forward * 2000 )
 							.Size( 1.0f )
@@ -24,7 +21,7 @@ namespace Sandbox.UI
 							.Run();
 
 			panel.PositionAtWorld( tr.EndPos );
-			
+
 		}
 
 		public static void PositionAtWorld( this Panel panel, Vector3 pos )
@@ -39,5 +36,5 @@ namespace Sandbox.UI
 			panel.Style.Dirty();
 		}
 	}
-	
+
 }

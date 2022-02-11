@@ -1,11 +1,4 @@
 ﻿using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Threading.Tasks;
 
 partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 {
@@ -83,7 +76,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 		StartReloadEffects();
 	}
 
-	public override void Simulate( Client owner ) 
+	public override void Simulate( Client owner )
 	{
 		if ( TimeSinceDeployed < 0.6f )
 			return;
@@ -155,7 +148,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 
 		for ( int i = 0; i < bulletCount; i++ )
 		{
-			var forward = Owner.EyeRot.Forward;
+			var forward = Owner.EyeRotation.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 			forward = forward.Normal;
 
@@ -163,7 +156,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 			// ShootBullet is coded in a way where we can have bullets pass through shit
 			// or bounce off shit, in which case it'll return multiple results
 			//
-			foreach ( var tr in TraceBullet( Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize ) )
+			foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize ) )
 			{
 				tr.Surface.DoBulletImpact( tr );
 
