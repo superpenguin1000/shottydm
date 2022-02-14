@@ -5,7 +5,7 @@ using Sandbox.UI.Construct;
 
 public class Ammo : Panel
 {
-	public Label Weapon;
+/*	public Label Weapon;
 	public Label Inventory;
 
 	public Ammo()
@@ -29,5 +29,5 @@ public class Ammo : Panel
 		var inv = weapon.AvailableAmmo();
 		Inventory.Text = $" / {inv}";
 		Inventory.SetClass( "active", inv >= 0 );
-	}
+	}*/
 }

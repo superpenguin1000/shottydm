@@ -31,14 +31,9 @@ partial class DeathmatchPlayer : Player
 
 		SupressPickupNotices = true;
 
-		Inventory.Add( new Pistol(), true );
-		Inventory.Add( new Shotgun() );
-		Inventory.Add( new SMG() );
-		Inventory.Add( new Crossbow() );
+		Inventory.Add( new DBShotgun() );
 
-		GiveAmmo( AmmoType.Pistol, 100 );
 		GiveAmmo( AmmoType.Buckshot, 8 );
-		GiveAmmo( AmmoType.Crossbow, 4 );
 
 		SupressPickupNotices = false;
 		Health = 100;
