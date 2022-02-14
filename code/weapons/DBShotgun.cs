@@ -15,7 +15,7 @@ partial class DBShotgun : BaseDmWeapon
 	public override float PrimaryRate => 1.2f;
 	public override float SecondaryRate => 1.2f;
 	public override AmmoType AmmoType => AmmoType.Buckshot;
-	public override int ClipSize => 4;
+	public override int ClipSize => 10;
 	public override float ReloadTime => 0.5f;
 	public override int Bucket => 0;
 
@@ -23,9 +23,9 @@ partial class DBShotgun : BaseDmWeapon
 	{
 		base.Spawn();
 
-		SetModel( "models/weapons/dbshotgun/doublebarrel.vmdl" );  
+		SetModel( "models/weapons/dbshotgun/doublebarrel.vmdl" );
 
-		AmmoClip = 4;
+		AmmoClip = 10;
 	}
 
 	public override void AttackPrimary()

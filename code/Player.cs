@@ -32,8 +32,9 @@ partial class DeathmatchPlayer : Player
 		SupressPickupNotices = true;
 
 		Inventory.Add( new DBShotgun() );
+		Inventory.Add( new ShotgunButt() );
 
-		GiveAmmo( AmmoType.Buckshot, 8 );
+		GiveAmmo( AmmoType.Buckshot, 10 );
 
 		SupressPickupNotices = false;
 		Health = 100;
@@ -120,6 +121,7 @@ partial class DeathmatchPlayer : Player
 			SwitchToBestWeapon();
 		}
 	}
+
 
 	public void SwitchToBestWeapon()
 	{

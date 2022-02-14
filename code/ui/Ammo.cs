@@ -21,9 +21,7 @@ public class Ammo : Panel
 
 		var weapon = player.ActiveChild as BaseDmWeapon;
 		SetClass( "active", weapon != null );
-
 		if ( weapon == null ) return;
-
 		Weapon.Text = $"{weapon.AmmoClip}";
 
 		var inv = weapon.AvailableAmmo();
