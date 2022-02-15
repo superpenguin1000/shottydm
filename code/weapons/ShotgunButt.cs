@@ -15,7 +15,7 @@ partial class ShotgunButt : BaseDmWeapon
 	{
 		base.Spawn();
 
-		SetModel( "models/weapons/dbshotgun/doublebarrel.vmdl" );
+		SetModel( "models/weapons/shotgunbutt/shotgunbutt.vmdl" );
 
 		AmmoClip = 1;
 	}
